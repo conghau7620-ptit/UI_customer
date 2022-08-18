@@ -8,7 +8,9 @@ const MyApp = ({ Component, pageProps }) => {
 
     useEffect(() => {
         const data = JSON.parse(getItem("CART"));
-        setCart(data);
+        if (data) {
+            setCart(data);
+        }
     }, []);
     return (
         <CartContext.Provider value={{ cart, setCart }}>
