@@ -33,7 +33,11 @@ export const Header = () => {
                     <div className="header-logo">
                         <Link href="/">
                             <a>
-                                <img src={header.logo} alt="" />
+                                <img
+                                    src={header.logo}
+                                    alt=""
+                                    style={{ width: 100, height: 100 }}
+                                />
                             </a>
                         </Link>
                     </div>

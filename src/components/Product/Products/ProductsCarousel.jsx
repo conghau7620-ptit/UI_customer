@@ -7,12 +7,18 @@ import { useContext } from "react";
 import Slider from "react-slick";
 import { SingleProduct } from "./SingleProduct/SingleProduct";
 
+import { setItem } from "utils/local";
 export const ProductsCarousel = ({ products }) => {
     const { cart, setCart } = useContext(CartContext);
 
     const handleAddToCart = (id) => {
         const newProduct = products?.find((pd) => pd.id === id);
         setCart([...cart, { ...newProduct, quantity: 1 }]);
+        setItem(
+            "CART",
+            JSON.stringify([...cart, { ...newProduct, quantity: 1 }])
+        );
+        console.log(JSON.stringify([...cart, newProduct]));
     };
 
     const settings = {

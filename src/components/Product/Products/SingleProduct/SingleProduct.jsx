@@ -27,12 +27,6 @@ export const SingleProduct = ({
                         </Link>
                         <div className="products-item__hover-options">
                             <button
-                                className="addList"
-                                onClick={() => onAddToWish(id)}
-                            >
-                                <i className="icon-heart"></i>
-                            </button>
-                            <button
                                 disabled={addedInCart}
                                 className={`addList ${
                                     addedInCart ? "added" : ""
