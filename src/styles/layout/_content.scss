@@ -183,7 +183,7 @@ h6,
 
 .saint-text {
   font-family: 'Mrs Saint Delafield';
-  color: #d05278;
+  color: #E42626;
   display: block;
   font-size: 50px;
   text-transform: capitalize;
@@ -197,25 +197,25 @@ h6,
   margin-bottom: 30px;
   margin-top: 4px;
 
-  span {
-    color: #d05278;
-    position: relative;
+  // span {
+  //   color: #d05278;
+  //   position: relative;
 
-    &:before {
-      content: '';
-      position: absolute;
-      left: 45%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 181px;
-      height: 155px;
-      background-image: url(/assets/img/main-text-decor.png);
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      transition: $transition;
-    }
-  }
+  //   &:before {
+  //     content: '';
+  //     position: absolute;
+  //     left: 45%;
+  //     top: 50%;
+  //     transform: translate(-50%, -50%);
+  //     width: 181px;
+  //     height: 155px;
+  //     background-image: url(/assets/img/main-text-decor.png);
+  //     background-size: contain;
+  //     background-repeat: no-repeat;
+  //     background-position: center;
+  //     transition: $transition;
+  //   }
+  // }
 }
 
 // main block
@@ -284,7 +284,7 @@ h6,
 
 .trending {
   overflow-x: hidden;
-  padding-top: 180px;
+  // padding-top: 180px;
   padding-bottom: 130px;
 
   &-top {
@@ -418,7 +418,7 @@ h6,
           font-size: 20px;
 
           &.icon-cart {
-            background: #d05278;
+            background: #222222;
             color: #fff;
           }
 
@@ -450,7 +450,7 @@ h6,
 
     &__sale,
     &__new {
-      background: #a3d2a2;
+      background: #fd6d75;
       padding: 10px 25px;
       text-transform: uppercase;
       color: #ffffff;
@@ -1094,7 +1094,7 @@ h6,
   margin-top: 180px;
 
   &-form {
-    background-color: #fcedea;
+    background-color: #a4a3a3;
     display: flex;
     align-items: center;
     padding: 50px 87px 50px 60px;
@@ -1153,7 +1153,7 @@ h6,
 .box-field {
   .form-control {
     background: #ffffff;
-    border: 1px solid #fcedea;
+    border: 1px solid #222222;
     height: 60px;
     line-height: 60px;
     padding: 18px 29px;
@@ -1230,7 +1230,7 @@ h6,
 
 .detail-block {
   padding-top: 218px;
-  background-image: url(/assets/img/detail-main-bg.jpg);
+  // background-image: url(/assets/img/detail-main-bg.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1300,7 +1300,7 @@ h6,
     margin: 0 13px;
     font-size: 16px;
     line-height: 170%;
-    color: #d05278;
+    color: #222222;
     position: relative;
 
     &:after {
@@ -1651,7 +1651,7 @@ h6,
 }
 
 .all-categories {
-  padding-top: 180px;
+  // padding-top: 180px;
   padding-bottom: 20px;
 
   .top-categories__items {
@@ -2378,7 +2378,7 @@ blockquote,
 // shop page
 
 .shop {
-  padding-top: 180px;
+  // padding-top: 180px;
   position: relative;
 
   .promo-video__decor {
@@ -2450,12 +2450,12 @@ blockquote,
               font-size: 12px;
             }
 
-            &:hover {
-              color: #d05278;
-              border-color: #d05278;
+            &:hover, &.active {
+              color: #E42626;
+              border-color: #E42626;
 
               span {
-                color: #d05278;
+                color: #E42626;
               }
             }
           }
@@ -3048,6 +3048,7 @@ blockquote,
 
       .blog-item__link {
         margin-top: 62px;
+        color: #222222;
       }
     }
   }
@@ -3081,8 +3082,8 @@ blockquote,
 
     &.active {
       // a {
-      background: #d05278;
-      border-color: #d05278;
+      background: #222222;
+      border-color: #222222;
       color: #ffffff;
     }
   }
@@ -3243,7 +3244,7 @@ blockquote,
 // cart page
 
 .cart {
-  padding-top: 185px;
+  // padding-top: 185px;
 
   .promo-video__decor {
     top: 17%;

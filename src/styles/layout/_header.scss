@@ -56,13 +56,11 @@ header {
     justify-content: space-between;
     align-items: center;
     transition: $transition;
-    &.fixed {
-      position: fixed;
-      width: 100%;
-      padding-top: 10px;
-      padding-bottom: 10px;
-      background-color: rgba($color: #fcedea, $alpha: 0.9);
-    }
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: fixed;
+    width: 100%;
+    background-color: #111;
   }
   &-box {
     display: flex;
@@ -77,30 +75,30 @@ header {
       margin: 0 30px;
       position: relative;
       a {
-        color: #222222;
+        color: #f3f3f4;
         font-size: 14px;
         line-height: 17px;
         position: relative;
         text-transform: uppercase;
         z-index: 2;
-        &:after {
-          content: '';
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          width: 30px;
-          height: 37px;
-          opacity: 0;
-          background-image: url(/assets/img/link-bg.png);
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center;
-          transition: $transition;
-        }
+        // &:after {
+        //   content: '';
+        //   position: absolute;
+        //   left: 50%;
+        //   top: 50%;
+        //   transform: translate(-50%, -50%);
+        //   width: 30px;
+        //   height: 37px;
+        //   opacity: 0;
+        //   background-image: url(/assets/img/link-bg.png);
+        //   background-size: contain;
+        //   background-repeat: no-repeat;
+        //   background-position: center;
+        //   transition: $transition;
+        // }
         &:hover,
         &.active {
-          color: #d05278;
+          color: #E42626;
           &:after {
             opacity: 1;
           }
@@ -164,11 +162,11 @@ header {
         align-items: center;
       }
       i {
-        color: #222222;
+        color: #868995;
         transition: $transition;
         font-size: 19px;
         &:hover {
-          color: #d05278;
+          color: #E42626;
         }
       }
       span {
@@ -178,7 +176,7 @@ header {
         display: flex;
         justify-content: center;
         align-items: center;
-        background: #d05278;
+        background: #E42626;
         font-family: 'Montserrat';
         font-weight: 700;
         font-size: 12px;

@@ -60,10 +60,6 @@ export const Shop = ({ productsProps, categories, brands }) => {
         setProducts(productOrder);
     }, [productOrder]);
 
-    console.log(category);
-    console.log(brand);
-    console.log(products);
-
     // useEffect(() => {
     //     if (filter.isNew && filter.isSale) {
     //         const newPro = productOrder.filter(
@@ -128,7 +124,16 @@ export const Shop = ({ productsProps, categories, brands }) => {
                                                 )
                                             }
                                         >
-                                            <a href="#">{name}</a>
+                                            <a
+                                                className={
+                                                    name === category
+                                                        ? "active"
+                                                        : null
+                                                }
+                                                href="#"
+                                            >
+                                                {name}
+                                            </a>
                                         </li>
                                     ))}
                                 </ul>
@@ -145,7 +150,16 @@ export const Shop = ({ productsProps, categories, brands }) => {
                                                 handleFilterByBrands(e, name)
                                             }
                                         >
-                                            <a href="#">{name}</a>
+                                            <a
+                                                className={
+                                                    name === brand
+                                                        ? "active"
+                                                        : null
+                                                }
+                                                href="#"
+                                            >
+                                                {name}
+                                            </a>
                                         </li>
                                     ))}
                                 </ul>
@@ -222,7 +236,7 @@ export const Shop = ({ productsProps, categories, brands }) => {
                         </div>
                     </div>
                 </div>
-                <img
+                {/* <img
                     className="promo-video__decor js-img"
                     src="/assets/img/promo-video__decor.jpg"
                     alt=""
@@ -231,7 +245,7 @@ export const Shop = ({ productsProps, categories, brands }) => {
                     className="shop-decor js-img"
                     src="/assets/img/shop-decor.jpg"
                     alt=""
-                />
+                /> */}
             </div>
             {/* <!-- SHOP EOF   --> */}
         </div>

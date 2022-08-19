@@ -263,11 +263,11 @@ export const ProductDetails = () => {
                         </div>
                     </div>
                 </div>
-                <img
+                {/* <img
                     className="promo-video__decor js-img"
                     src="/assets/img/promo-video__decor.jpg"
                     alt=""
-                />
+                /> */}
             </div>
             {/* <!-- PRODUCT EOF   --> */}
         </>

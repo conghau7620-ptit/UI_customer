@@ -10,21 +10,21 @@ export const Header = () => {
     const [fixedNav, setFixedNav] = useState(false);
 
     // For Fixed nav
-    useEffect(() => {
-        window.addEventListener("scroll", isSticky);
-        return () => {
-            window.removeEventListener("scroll", isSticky);
-        };
-    });
+    // useEffect(() => {
+    //     window.addEventListener("scroll", isSticky);
+    //     return () => {
+    //         window.removeEventListener("scroll", isSticky);
+    //     };
+    // });
 
-    const isSticky = () => {
-        const scrollTop = window.scrollY;
-        if (scrollTop > 10) {
-            setFixedNav(true);
-        } else {
-            setFixedNav(false);
-        }
-    };
+    // const isSticky = () => {
+    //     const scrollTop = window.scrollY;
+    //     if (scrollTop > 10) {
+    //         setFixedNav(true);
+    //     } else {
+    //         setFixedNav(false);
+    //     }
+    // };
     return (
         <>
             {/* <!-- BEGIN HEADER --> */}
@@ -36,7 +36,11 @@ export const Header = () => {
                                 <img
                                     src={header.logo}
                                     alt=""
-                                    style={{ width: 100, height: 100 }}
+                                    style={{
+                                        width: 80,
+                                        height: 80,
+                                        borderRadius: "50%",
+                                    }}
                                 />
                             </a>
                         </Link>
