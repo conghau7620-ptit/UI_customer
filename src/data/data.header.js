@@ -1,5 +1,5 @@
 export const header = {
-    logo: "/assets/img/logo.jpg",
+    logo: "/assets/img/LILYSHOP.svg",
 };
 
 export const navItem = [

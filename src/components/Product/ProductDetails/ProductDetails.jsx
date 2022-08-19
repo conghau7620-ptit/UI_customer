@@ -70,18 +70,13 @@ export const ProductDetails = () => {
                                             key={index}
                                             className="product-slider__main-item"
                                         >
-                                            {/* <div className="products-item__type">
-                                                {product.isSale && (
+                                            <div className="products-item__type">
+                                                {product.discount > 0 && (
                                                     <span className="products-item__sale">
                                                         sale
                                                     </span>
                                                 )}
-                                                {product.isNew && (
-                                                    <span className="products-item__new">
-                                                        new
-                                                    </span>
-                                                )}
-                                            </div> */}
+                                            </div>
                                             <img src={img} alt="product" />
                                         </div>
                                     ))}
@@ -223,9 +218,9 @@ export const ProductDetails = () => {
                                     <i className="icon-cart"></i> Thêm vào giỏ
                                     hàng
                                 </button>
-                                <button className="btn btn-grey btn-icon">
+                                {/* <button className="btn btn-grey btn-icon">
                                     <i className="icon-heart"></i> Yêu thích
-                                </button>
+                                </button> */}
                             </div>
                         </div>
                     </div>

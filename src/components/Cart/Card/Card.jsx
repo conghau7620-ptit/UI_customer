@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const Card = ({ cart, onChangeQuantity }) => {
+export const Card = ({ cart, onChangeQuantity, onRemoveProduct }) => {
     const {
         name,
         imageUrls,
@@ -31,6 +31,12 @@ export const Card = ({ cart, onChangeQuantity }) => {
                             </span>
                         )}
                         <span className="cart-table__info-num">SKU: {id}</span>
+                        <p
+                            style={{ color: "#d05278", cursor: "pointer" }}
+                            onClick={() => onRemoveProduct(id)}
+                        >
+                            Xóa
+                        </p>
                     </div>
                 </div>
                 <div className="cart-table__col">

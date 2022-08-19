@@ -6,16 +6,16 @@ export const SingleProduct = ({
     onAddToCart,
     addedInCart,
 }) => {
-    const { name, oldPrice, price, imageUrls, isSale, isNew, id } = product;
+    const { name, oldPrice, price, imageUrls, isSale, isNew, id, discount } =
+        product;
     return (
         <>
             {/* <!-- BEING SINGLE PRODUCT ITEM --> */}
             <div className="products-item">
                 <div className="products-item__type">
-                    {isSale && (
+                    {discount > 0 && (
                         <span className="products-item__sale">sale</span>
                     )}
-                    {isNew && <span className="products-item__new">new</span>}
                 </div>
                 <div className="products-item__img">
                     <img src={imageUrls[0]} className="js-img" alt="" />

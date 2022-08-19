@@ -60,13 +60,13 @@ export const Header = () => {
                                     </a>
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="/wishlist">
                                     <a>
                                         <i className="icon-heart"></i>
                                     </a>
                                 </Link>
-                            </li>
+                            </li> */}
                             <li>
                                 <Link href="/cart">
                                     <a>

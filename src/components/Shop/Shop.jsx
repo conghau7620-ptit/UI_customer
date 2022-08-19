@@ -20,7 +20,7 @@ export const Shop = ({ productsProps, categories, brands }) => {
     );
 
     const [products, setProducts] = useState([...productOrder]);
-    const [filter, setFilter] = useState({ isNew: false, isSale: false });
+    // const [filter, setFilter] = useState({ isNew: false, isSale: false });
     const [category, setCategory] = useState(null);
     const [brand, setBrand] = useState(null);
 
@@ -60,22 +60,26 @@ export const Shop = ({ productsProps, categories, brands }) => {
         setProducts(productOrder);
     }, [productOrder]);
 
-    useEffect(() => {
-        if (filter.isNew && filter.isSale) {
-            const newPro = productOrder.filter(
-                (pd) => pd.isNew === true && pd.isSale === true
-            );
-            setProducts(newPro);
-        } else if (filter.isNew && !filter.isSale) {
-            const newPro = productOrder.filter((pd) => pd.isNew === true);
-            setProducts(newPro);
-        } else if (filter.isSale && !filter.isNew) {
-            const newPro = productOrder.filter((pd) => pd.isSale === true);
-            setProducts(newPro);
-        } else {
-            setProducts([...productOrder]);
-        }
-    }, [filter, productOrder]);
+    console.log(category);
+    console.log(brand);
+    console.log(products);
+
+    // useEffect(() => {
+    //     if (filter.isNew && filter.isSale) {
+    //         const newPro = productOrder.filter(
+    //             (pd) => pd.isNew === true && pd.isSale === true
+    //         );
+    //         setProducts(newPro);
+    //     } else if (filter.isNew && !filter.isSale) {
+    //         const newPro = productOrder.filter((pd) => pd.isNew === true);
+    //         setProducts(newPro);
+    //     } else if (filter.isSale && !filter.isNew) {
+    //         const newPro = productOrder.filter((pd) => pd.isSale === true);
+    //         setProducts(newPro);
+    //     } else {
+    //         setProducts([...productOrder]);
+    //     }
+    // }, [filter, productOrder]);
     const paginate = usePagination(products, 9);
 
     const handleSort = (value) => {

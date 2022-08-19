@@ -4,6 +4,7 @@ import { CartContext } from "pages/_app";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 
+import { setItem } from "utils/local";
 export const Cart = () => {
     const { cart, setCart } = useContext(CartContext);
     const [count, setCount] = useState(0);
@@ -19,11 +20,19 @@ export const Cart = () => {
         if (change === "increment") {
             cart.find((item) => item.id === id).quantity = quantity + 1;
             setCount(count + 1);
+            setItem("CART", JSON.stringify(cart));
         }
         if (change === "decrement" && quantity > 1) {
             cart.find((item) => item.id === id).quantity = quantity - 1;
             setCount(count + 1);
+            setItem("CART", JSON.stringify(cart));
         }
+    };
+
+    const handleRemoveProduct = (id) => {
+        const newCart = cart.filter((cart) => cart.id !== id);
+        setCart(newCart);
+        setItem("CART", JSON.stringify(newCart));
     };
 
     useEffect(() => {
@@ -53,6 +62,7 @@ export const Cart = () => {
                                             cart.id
                                         )
                                     }
+                                    onRemoveProduct={handleRemoveProduct}
                                     key={cart.id}
                                     cart={cart}
                                 />
