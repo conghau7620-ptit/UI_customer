@@ -23,6 +23,8 @@ export const Shop = ({ productsProps, categories, brands }) => {
     // const [filter, setFilter] = useState({ isNew: false, isSale: false });
     const [category, setCategory] = useState(null);
     const [brand, setBrand] = useState(null);
+    const [rangeValues, setRangeValues] = useState([0, 2000000]);
+    const [searchValue, setSearchValue] = useState("");
 
     const handleFilterByCategories = (e, name) => {
         e.preventDefault();
@@ -35,26 +37,46 @@ export const Shop = ({ productsProps, categories, brands }) => {
     };
 
     useEffect(() => {
+        let newProduct;
+        newProduct = productOrder.filter(
+            (product) =>
+                product.price >= rangeValues[0] &&
+                product.price <= rangeValues[1]
+        );
+
         if (category && brand) {
-            const newProduct = productOrder.filter(
+            newProduct = newProduct.filter(
                 (product) =>
                     product.type === category && product.brand === brand
             );
             setProducts(newProduct);
         } else if (category && !brand) {
-            const newProduct = productOrder.filter(
+            newProduct = newProduct.filter(
                 (product) => product.type === category
             );
             setProducts(newProduct);
         } else if (brand && !category) {
-            const newProduct = productOrder.filter(
+            newProduct = newProduct.filter(
                 (product) => product.brand === brand
             );
             setProducts(newProduct);
         } else {
             setProducts([...productOrder]);
         }
-    }, [category, brand]);
+    }, [category, brand, rangeValues]);
+
+    //Search Effect
+    useEffect(() => {
+        const newProduct = productOrder.filter((product) =>
+            product.name
+                .toLowerCase()
+                .split(" ")
+                .join("")
+                .includes(searchValue.toLowerCase().trim().split(" ").join(""))
+        );
+        console.log(newProduct);
+        setProducts(newProduct);
+    }, [searchValue]);
 
     useEffect(() => {
         setProducts(productOrder);
@@ -80,17 +102,23 @@ export const Shop = ({ productsProps, categories, brands }) => {
 
     const handleSort = (value) => {
         if (value === "highToMin") {
-            const newOrder = allProducts.sort((a, b) =>
+            const newOrder = products.sort((a, b) =>
                 a.price < b.price ? 1 : -1
             );
-            setProductOrder(newOrder);
+            setProducts([...newOrder]);
         }
         if (value === "minToHigh") {
-            const newOrder = allProducts.sort((a, b) =>
+            const newOrder = products.sort((a, b) =>
                 a.price > b.price ? 1 : -1
             );
-            setProductOrder(newOrder);
+            setProducts([...newOrder]);
         }
+    };
+
+    const handleClearFilter = () => {
+        if (brand) setBrand(null);
+        if (category) setCategory(null);
+        if (rangeValues) setRangeValues([0, 2000000]);
     };
 
     return (
@@ -106,8 +134,38 @@ export const Shop = ({ productsProps, categories, brands }) => {
                                     type="search"
                                     className="form-control"
                                     placeholder="Tìm Kiếm"
+                                    onChange={(e) =>
+                                        setSearchValue(e.target.value)
+                                    }
                                 />
                                 <i className="icon-search"></i>
+                            </div>
+                            <div className="shop-aside__item">
+                                <span className="shop-aside__item-title">
+                                    Khoảng Giá
+                                </span>
+                                <div className="range-slider">
+                                    <Range
+                                        min={0}
+                                        max={2000000}
+                                        defaultValue={[0, 2000000]}
+                                        value={rangeValues}
+                                        tipFormatter={(value) =>
+                                            `${value.toLocaleString("vi", {
+                                                style: "currency",
+                                                currency: "VND",
+                                            })}`
+                                        }
+                                        allowCross={false}
+                                        tipProps={{
+                                            placement: "bottom",
+                                            prefixCls: "rc-slider-tooltip",
+                                        }}
+                                        onChange={(values) =>
+                                            setRangeValues(values)
+                                        }
+                                    />
+                                </div>
                             </div>
                             <div className="shop-aside__item">
                                 <span className="shop-aside__item-title">
@@ -143,9 +201,9 @@ export const Shop = ({ productsProps, categories, brands }) => {
                                     Thương Hiệu
                                 </span>
                                 <ul>
-                                    {brands.map(({ name }) => (
+                                    {brands.map(({ id, name }) => (
                                         <li
-                                            key={name}
+                                            key={id}
                                             onClick={(e) =>
                                                 handleFilterByBrands(e, name)
                                             }
@@ -164,58 +222,29 @@ export const Shop = ({ productsProps, categories, brands }) => {
                                     ))}
                                 </ul>
                             </div>
-                            {/* <div className="shop-aside__item">
-                                <span className="shop-aside__item-title">
-                                    Price
-                                </span>
-                                <div className="range-slider">
-                                    <Range
-                                        min={0}
-                                        max={20}
-                                        defaultValue={[0, 20]}
-                                        tipFormatter={(value) => `${value}$`}
-                                        allowCross={false}
-                                        tipProps={{
-                                            placement: "bottom",
-                                            prefixCls: "rc-slider-tooltip",
-                                        }}
-                                    />
-                                </div>
-                            </div> */}
                         </div>
                         {/* <!-- Shop Main --> */}
                         <div className="shop-main">
                             <div className="shop-main__filter">
-                                {/* <div className="shop-main__checkboxes">
-                                    <label className="checkbox-box">
-                                        <input
-                                            checked={filter.isSale}
-                                            onChange={() =>
-                                                setFilter({
-                                                    ...filter,
-                                                    isSale: !filter.isSale,
-                                                })
-                                            }
-                                            type="checkbox"
-                                        />
-                                        <span className="checkmark"></span>
-                                        SALE
-                                    </label>
-                                    <label className="checkbox-box">
-                                        <input
-                                            checked={filter.isNew}
-                                            onChange={() =>
-                                                setFilter({
-                                                    ...filter,
-                                                    isNew: !filter.isNew,
-                                                })
-                                            }
-                                            type="checkbox"
-                                        />
-                                        <span className="checkmark"></span>
-                                        NEW
-                                    </label>
-                                </div> */}
+                                <div className="shop-main__checkboxes">
+                                    {category || brand ? (
+                                        <button
+                                            style={{
+                                                background: "#fd6d75",
+                                                padding: "10px 25px",
+                                                color: "#ffffff",
+                                                fontWeight: "bold",
+                                                fontSize: "14px",
+                                                lineHeight: "100%",
+                                                outline: "none",
+                                                border: "none",
+                                            }}
+                                            onClick={handleClearFilter}
+                                        >
+                                            Xóa Bộ Lọc
+                                        </button>
+                                    ) : null}
+                                </div>
                                 <div className="shop-main__select">
                                     <Dropdown
                                         options={options}
