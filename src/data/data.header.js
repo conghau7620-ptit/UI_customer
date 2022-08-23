@@ -58,19 +58,19 @@ export const navItem = [
     //   ],
     // },
     {
-        name: "shop",
+        name: "Cửa Hàng",
         path: "/shop",
     },
-    {
-        name: "Danh Mục",
-        path: "/categories",
-    },
+    // {
+    //     name: "Danh Mục",
+    //     path: "/categories",
+    // },
     // {
     //     name: "blog",
     //     path: "/blog",
     // },
-    {
-        name: "Liên Hệ",
-        path: "/contact",
-    },
+    // {
+    //     name: "Liên Hệ",
+    //     path: "/contact",
+    // },
 ];

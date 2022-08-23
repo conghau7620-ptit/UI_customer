@@ -4,9 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import { Nav } from "./Nav/Nav";
 import { navItem } from "data/data.header";
 import { CartContext } from "pages/_app";
+import { AuthContext } from "context/authProvider";
 
 export const Header = () => {
     const { cart } = useContext(CartContext);
+    const { auth } = useContext(AuthContext);
     const [fixedNav, setFixedNav] = useState(false);
 
     // For Fixed nav
@@ -50,20 +52,38 @@ export const Header = () => {
                         <Nav navItem={navItem} />
                         {/* header options */}
                         <ul className="header-options">
-                            <li>
+                            {/* <li>
                                 <Link href="/faq">
                                     <a>
                                         <i className="icon-search"></i>
                                     </a>
                                 </Link>
-                            </li>
-                            <li>
-                                <Link href="/profile">
-                                    <a>
-                                        <i className="icon-user"></i>
-                                    </a>
-                                </Link>
-                            </li>
+                            </li> */}
+                            {auth ? (
+                                <li>
+                                    <Link href="/profile">
+                                        <a>
+                                            <i className="icon-user"></i>
+                                            <p
+                                                style={{
+                                                    color: "#FFF",
+                                                    marginLeft: 5,
+                                                }}
+                                            >
+                                                {auth.name}
+                                            </p>
+                                        </a>
+                                    </Link>
+                                </li>
+                            ) : (
+                                <li>
+                                    <Link href="/login">
+                                        <a>
+                                            <i className="icon-user"></i>
+                                        </a>
+                                    </Link>
+                                </li>
+                            )}
                             {/* <li>
                                 <Link href="/wishlist">
                                     <a>

@@ -2466,22 +2466,22 @@ blockquote,
         // margin-bottom: 123px;
 
         .rc-slider-handle {
-          border: solid 2px #d05278;
-          background-color: #d05278;
+          border: solid 2px #E42626;
+          background-color: #E42626;
 
           &:hover {
-            border-color: #d05278;
+            border-color: #E42626;
             cursor: pointer;
           }
         }
 
         .rc-slider-handle:active {
-          border-color: #d05278;
-          box-shadow: 0 0 5px #d05278;
+          border-color: #E42626;
+          box-shadow: 0 0 5px #E42626;
         }
 
         .rc-slider-track {
-          background-color: #d05278;
+          background-color: #E42626;
         }
 
         .rc-slider-tooltip-hidden {
@@ -4047,7 +4047,7 @@ blockquote,
 // login page
 
 .login {
-  padding-top: 180px;
+  // padding-top: 180px;
 
   .promo-video__decor {
     top: 17.5%;
@@ -4142,7 +4142,7 @@ blockquote,
       }
 
       a {
-        color: #d05278;
+        color: #E42626;
         cursor: pointer;
 
         &:hover {
@@ -4284,7 +4284,6 @@ input[type='search']::-webkit-search-results-decoration {
 // profile
 
 .profile {
-  padding-top: 180px;
   padding-bottom: 50px;
   position: relative;
 
@@ -4419,7 +4418,7 @@ input[type='search']::-webkit-search-results-decoration {
 
   &-main {
     width: calc(100% - 420px);
-
+    flex: 1;
     .nav-tab-list li {
       margin-right: 15px;
     }

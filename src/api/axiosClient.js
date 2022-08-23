@@ -1,6 +1,6 @@
 import axios from "axios";
 import queryString from "query-string";
-
+import { getItem } from "utils/local";
 const axiosClient = axios.create({
     baseURL: "http://localhost:8080/api",
     headers: {
@@ -13,6 +13,8 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use((config) => {
     // Hanlde token
+    // const token = JSON.parse(getItem("TOKEN"));
+    // config.headers.Authorization = token ? `Bearer ${token}` : "";
     return config;
 });
 

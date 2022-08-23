@@ -5,17 +5,17 @@ import { getAllProduct, getAllType, getAllBrand } from "api/productApi";
 
 const breadcrumbsData = [
     {
-        label: "Home",
+        label: "Trang Chủ",
         path: "/",
     },
     {
-        label: "Shop",
+        label: "Cửa Hàng",
         path: "/shop",
     },
 ];
 const ShopPage = ({ products, categories, brands }) => {
     return (
-        <PublicLayout breadcrumb={breadcrumbsData} breadcrumbTitle="Shop">
+        <PublicLayout breadcrumb={breadcrumbsData} breadcrumbTitle="Cửa Hàng">
             <Shop
                 productsProps={products.productResponses}
                 categories={categories.types}

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import AuthProvider from "context/authProvider";
 import "../styles/styles.scss";
 
 import { getItem } from "utils/local";
@@ -12,10 +13,13 @@ const MyApp = ({ Component, pageProps }) => {
             setCart(data);
         }
     }, []);
+
     return (
-        <CartContext.Provider value={{ cart, setCart }}>
-            <Component {...pageProps} />
-        </CartContext.Provider>
+        <AuthProvider>
+            <CartContext.Provider value={{ cart, setCart }}>
+                <Component {...pageProps} />
+            </CartContext.Provider>
+        </AuthProvider>
     );
 };
 

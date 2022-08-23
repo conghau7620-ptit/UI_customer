@@ -3,10 +3,11 @@ import socialData from "data/social";
 import { CartContext } from "pages/_app";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
-
+import { AuthContext } from "context/authProvider";
 import { setItem } from "utils/local";
 export const Cart = () => {
     const { cart, setCart } = useContext(CartContext);
+    const { auth } = useContext(AuthContext);
     const [count, setCount] = useState(0);
     const socialLinks = [...socialData];
 
@@ -53,6 +54,9 @@ export const Cart = () => {
                                 <div className="cart-table__col">Tạm Tính</div>
                             </div>
 
+                            {cart.length <= 0 && (
+                                <h2>Bạn Chưa Chọn Sản Phẩm</h2>
+                            )}
                             {cart.map((cart) => (
                                 <Card
                                     onChangeQuantity={(change, quantity) =>
@@ -135,9 +139,19 @@ export const Cart = () => {
                                     })}
                                 </span>
                             </div>
-                            <Link href="/checkout">
-                                <a className="btn">Tiến Hành Thanh Toán</a>
-                            </Link>
+                            {auth ? (
+                                cart.length > 0 ? (
+                                    <Link href="/checkout">
+                                        <a className="btn">
+                                            Tiến Hành Thanh Toán
+                                        </a>
+                                    </Link>
+                                ) : null
+                            ) : (
+                                <Link href="/login">
+                                    <a className="btn">Tiến Hành Thanh Toán</a>
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>

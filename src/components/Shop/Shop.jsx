@@ -49,19 +49,19 @@ export const Shop = ({ productsProps, categories, brands }) => {
                 (product) =>
                     product.type === category && product.brand === brand
             );
-            setProducts(newProduct);
+            return setProducts(newProduct);
         } else if (category && !brand) {
             newProduct = newProduct.filter(
                 (product) => product.type === category
             );
-            setProducts(newProduct);
+            return setProducts(newProduct);
         } else if (brand && !category) {
             newProduct = newProduct.filter(
                 (product) => product.brand === brand
             );
-            setProducts(newProduct);
+            return setProducts(newProduct);
         } else {
-            setProducts([...productOrder]);
+            return setProducts(newProduct);
         }
     }, [category, brand, rangeValues]);
 
@@ -162,7 +162,7 @@ export const Shop = ({ productsProps, categories, brands }) => {
                                             prefixCls: "rc-slider-tooltip",
                                         }}
                                         onChange={(values) =>
-                                            setRangeValues(values)
+                                            setRangeValues([...values])
                                         }
                                     />
                                 </div>
