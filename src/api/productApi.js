@@ -1,5 +1,11 @@
 import axiosClient from "./axiosClient";
 
+export const getTopProduct = async () => {
+    const url = "/product/top-product";
+    const response = await axiosClient.get(url);
+    return response;
+};
+
 export const getAllProduct = async (params) => {
     const url = "/product/active";
     const response = await axiosClient.get(url, { params });

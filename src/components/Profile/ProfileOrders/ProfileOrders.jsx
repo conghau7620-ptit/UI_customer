@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Card } from "./Card/Card";
 import { AuthContext } from "context/authProvider";
-import { getOrder } from "api/userApi";
+import { getOrder, cancelOrder } from "api/userApi";
 export const ProfileOrders = () => {
     const { auth } = useContext(AuthContext);
     const [active, setActive] = useState(-1);
@@ -14,18 +14,27 @@ export const ProfileOrders = () => {
             setActive(indx);
         }
     };
+    const getOrderList = async () => {
+        try {
+            const response = await getOrder(auth.id);
+            setOrders(response);
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     useEffect(() => {
-        const getOrderList = async () => {
-            try {
-                const response = await getOrder(auth.id);
-                setOrders(response);
-            } catch (err) {
-                console.log(err);
-            }
-        };
         getOrderList();
     }, []);
+
+    const handleCancelOrder = async (id) => {
+        try {
+            await cancelOrder(id);
+            await getOrderList();
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <>
@@ -35,6 +44,7 @@ export const ProfileOrders = () => {
                     <div className="profile-orders__col">Địa Chỉ</div>
                     <div className="profile-orders__col">Tổng Đơn Hàng</div>
                     <div className="profile-orders__col">Trạng Thái</div>
+                    <div className="profile-orders__col">Hành Động</div>
                 </div>
                 {orders?.map((order, index) => (
                     <Card
@@ -43,6 +53,7 @@ export const ProfileOrders = () => {
                         onCollapse={handleCollapse}
                         order={order}
                         active={active}
+                        onCancelOrder={handleCancelOrder}
                     />
                 ))}
             </div>

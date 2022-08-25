@@ -22,34 +22,43 @@ export const Registration = () => {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        placeholder="Enter your name"
+                                        placeholder="Tên đăng nhập"
                                     />
                                 </div>
+                                <div className="box-field">
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        placeholder="Mật Khẩu"
+                                    />
+                                </div>
+                            </div>
+                            <div className="box-field__row">
                                 <div className="box-field">
                                     <input
                                         type="text"
                                         className="form-control"
-                                        placeholder="Enter your last name"
+                                        placeholder="Họ Tên"
                                     />
                                 </div>
-                            </div>
-                            <div className="box-field__row">
                                 <div className="box-field">
                                     <input
                                         type="tel"
                                         className="form-control"
-                                        placeholder="Enter your phone"
-                                    />
-                                </div>
-                                <div className="box-field">
-                                    <input
-                                        type="email"
-                                        className="form-control"
-                                        placeholder="Enter your email"
+                                        placeholder="Số Điện Thoại"
                                     />
                                 </div>
                             </div>
                             <div className="box-field__row">
+                                <div className="box-field">
+                                    <input
+                                        type="email"
+                                        className="form-control"
+                                        placeholder="Email"
+                                    />
+                                </div>
+                            </div>
+                            {/* <div className="box-field__row">
                                 <span>password</span>
                                 <div className="box-field">
                                     <input
@@ -65,7 +74,7 @@ export const Registration = () => {
                                         placeholder="Confirm password"
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                             {/* <label className="checkbox-box checkbox-box__sm">
                                 <input type="checkbox" />
                                 <span className="checkmark"></span>

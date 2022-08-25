@@ -147,11 +147,11 @@ export const Cart = () => {
                                         </a>
                                     </Link>
                                 ) : null
-                            ) : (
+                            ) : cart.length > 0 ? (
                                 <Link href="/login">
                                     <a className="btn">Tiến Hành Thanh Toán</a>
                                 </Link>
-                            )}
+                            ) : null}
                         </div>
                     </div>
                 </div>

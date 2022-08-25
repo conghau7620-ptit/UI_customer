@@ -10,7 +10,7 @@ import { Trending } from "components/landing/Trending/Trending";
 import { Subscribe } from "components/shared/Subscribe/Subscribe";
 import { Layout } from "layout/Layout";
 
-import { getAllProduct, getAllType } from "api/productApi";
+import { getTopProduct, getAllType } from "api/productApi";
 export default function Home({ products, categories }) {
     return (
         <Layout>
@@ -33,7 +33,7 @@ export default function Home({ products, categories }) {
 
 export async function getStaticProps() {
     try {
-        const productResponse = await getAllProduct();
+        const productResponse = await getTopProduct();
         const typeResponse = await getAllType();
         return {
             props: {

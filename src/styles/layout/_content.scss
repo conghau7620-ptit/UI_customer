@@ -4667,6 +4667,16 @@ input[type='search']::-webkit-search-results-decoration {
   display: none;
 }
 
+.disabled_btn {
+  background-color: #9a9291;
+  color: #fff;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.disabled_btn:hover {
+  background-color: #ccc;
+}
+
 .links-page {
   padding-top: 130px;
 

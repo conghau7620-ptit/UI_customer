@@ -3,16 +3,16 @@ import { SectionTitle } from "components/shared/SectionTitle/SectionTitle";
 import { useEffect, useState } from "react";
 
 export const Trending = ({ productsProps, categories }) => {
-    const trendingProducts = [...productsProps.slice(0, 15)];
+    const trendingProducts = [...productsProps];
     const [products, setProducts] = useState(trendingProducts);
-    const [filterItem, setFilterItem] = useState("Jacket");
+    // const [filterItem, setFilterItem] = useState("Jacket");
 
-    useEffect(() => {
-        const newItems = trendingProducts.filter(
-            (pd) => pd.type === filterItem
-        );
-        setProducts(newItems);
-    }, [filterItem]);
+    // useEffect(() => {
+    //     const newItems = trendingProducts.filter(
+    //         (pd) => pd.type === filterItem
+    //     );
+    //     setProducts(newItems);
+    // }, [filterItem]);
 
     return (
         <>
@@ -21,7 +21,7 @@ export const Trending = ({ productsProps, categories }) => {
                 <div className="trending-content">
                     <SectionTitle title="Sản Phẩm Nổi Bật" />
                     <div className="tab-wrap trending-tabs">
-                        <ul className="nav-tab-list tabs">
+                        {/* <ul className="nav-tab-list tabs">
                             {categories.slice(0, 5).map(({ name }) => (
                                 <li
                                     key={name}
@@ -33,7 +33,7 @@ export const Trending = ({ productsProps, categories }) => {
                                     {name}
                                 </li>
                             ))}
-                        </ul>
+                        </ul> */}
                         <div className="products-items">
                             <ProductsCarousel products={products} />
                         </div>

@@ -34,3 +34,17 @@ export const createOrder = async (data) => {
     });
     return response;
 };
+
+export const cancelOrder = async (id) => {
+    const url = `/order/customer/cancel/${id}`;
+    const response = await axiosClient.put(
+        url,
+        {},
+        {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(getItem("TOKEN"))}`,
+            },
+        }
+    );
+    return response;
+};

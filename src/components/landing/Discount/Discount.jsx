@@ -18,8 +18,8 @@ export const Discount = () => {
                             Get Your <span>50%</span> Off
                         </span>
                         <p>
-                            Đừng bỏ lỡ các chương trình khuyến mãi Hot tại
-                            BeShop
+                            Đừng bỏ lỡ các chương trình khuyến mãi Hot tại LiLy
+                            Shop
                         </p>
 
                         <Link href="/shop">

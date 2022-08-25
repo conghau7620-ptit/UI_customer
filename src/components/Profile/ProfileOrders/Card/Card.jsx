@@ -1,6 +1,12 @@
-export const Card = ({ order, index, onCollapse, active }) => {
-    const { createdDate, orderAddress, total, status, orderDetailsResponses } =
-        order;
+export const Card = ({ order, index, onCollapse, active, onCancelOrder }) => {
+    const {
+        createdDate,
+        orderAddress,
+        total,
+        status,
+        orderDetailsResponses,
+        id,
+    } = order;
 
     return (
         <>
@@ -48,6 +54,27 @@ export const Card = ({ order, index, onCollapse, active }) => {
                             onClick={() => onCollapse(index)}
                             className="profile-orders__col-btn"
                         ></span>
+                    </div>
+                    <div className="profile-orders__col">
+                        <span className="profile-orders__col-mob">
+                            Hành Động
+                        </span>
+                        <span>
+                            <button
+                                className={`btn ${
+                                    status !== "đang xử lý"
+                                        ? "disabled_btn"
+                                        : ""
+                                }`}
+                                style={{
+                                    paddingLeft: 10,
+                                    paddingRight: 10,
+                                }}
+                                onClick={() => onCancelOrder(id)}
+                            >
+                                Hủy Đơn Hàng
+                            </button>
+                        </span>
                     </div>
                 </div>
                 <div className="profile-orders__content">
