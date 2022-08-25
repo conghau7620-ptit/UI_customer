@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { ProfileAside } from "./ProfileAside/ProfileAside";
 import { ProfileOrders } from "./ProfileOrders/ProfileOrders";
-
+import router from "next/router";
+import { AuthContext } from "context/authProvider";
+import { removeItem } from "utils/local";
 export const Profile = () => {
     const [activeTab, setActiveTab] = useState("orders");
+    const { setAuth } = useContext(AuthContext);
     return (
         <>
             {/* <!-- BEGIN PROFILE --> */}
@@ -33,6 +36,15 @@ export const Profile = () => {
                                         }
                                     >
                                         Quản Lý Đơn Hàng
+                                    </li>
+                                    <li
+                                        onClick={() => {
+                                            router.push("/");
+                                            removeItem("TOKEN");
+                                            setAuth(null);
+                                        }}
+                                    >
+                                        Đăng Xuất
                                     </li>
                                     {/* <li
                     onClick={() => setActiveTab('wishList')}
