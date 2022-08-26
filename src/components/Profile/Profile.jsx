@@ -4,9 +4,12 @@ import { ProfileOrders } from "./ProfileOrders/ProfileOrders";
 import router from "next/router";
 import { AuthContext } from "context/authProvider";
 import { removeItem } from "utils/local";
+
+import ProfileUpdate from "./ProfileUpdate/ProfileUpdate";
 export const Profile = () => {
-    const [activeTab, setActiveTab] = useState("orders");
+    const [activeTab, setActiveTab] = useState("myInfo");
     const { setAuth } = useContext(AuthContext);
+
     return (
         <>
             {/* <!-- BEGIN PROFILE --> */}
@@ -60,13 +63,7 @@ export const Profile = () => {
                                             className="tab-cont"
                                             id="profile-tab_1"
                                         >
-                                            Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Neque
-                                            quasi, sit vel exercitationem ea
-                                            veniam quo asperiores corporis
-                                            dignissimos quod id. Adipisci libero
-                                            similique a commodi fugiat quibusdam
-                                            maiores ipsa!
+                                            <ProfileUpdate />
                                         </div>
                                     )}
 

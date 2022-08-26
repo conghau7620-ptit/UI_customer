@@ -241,12 +241,12 @@ export const ProductDetails = () => {
                     <div className="product-detail">
                         <div className="tab-wrap product-detail-tabs">
                             <ul className="nav-tab-list tabs pd-tab">
-                                <li
+                                {/* <li
                                     className={tab === 1 ? "active" : ""}
                                     onClick={() => setTab(1)}
                                 >
                                     Mô Tả
-                                </li>
+                                </li> */}
                                 <li
                                     className={tab === 2 ? "active" : ""}
                                     onClick={() => setTab(2)}

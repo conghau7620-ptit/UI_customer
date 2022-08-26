@@ -48,3 +48,15 @@ export const cancelOrder = async (id) => {
     );
     return response;
 };
+
+export const updateAvatar = async (img, params) => {
+    const url = `/image/user`;
+    const response = await axiosClient.put(url, img, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${JSON.parse(getItem("TOKEN"))}`,
+        },
+        params,
+    });
+    return response;
+};
