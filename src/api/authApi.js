@@ -6,11 +6,11 @@ export const login = async ({ username, password }) => {
     return response;
 };
 
-export const register = async () => {
+export const registerUser = async (data) => {
     const url = "/user/register";
     const response = await axiosClient.post(url, data, {
         headers: {
-            Authorization: `Bearer ${JSON.parse(getItem("TOKEN"))}`,
+            "Content-Type": "multipart/form-data",
         },
     });
     return response;
