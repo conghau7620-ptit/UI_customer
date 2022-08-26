@@ -2,13 +2,22 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "context/authProvider";
 import { Box } from "@mui/system";
 import { Badge, IconButton, Avatar, TextField, Input } from "@mui/material";
-import { updateAvatar } from "api/userApi";
+import { updateAvatar, updateProfile } from "api/userApi";
 import EditIcon from "@mui/icons-material/Edit";
+import router from "next/router";
 
 const ProfileUpdate = () => {
     const { auth, setAuth } = useContext(AuthContext);
     const [img, setImg] = useState();
     const [imgUpdate, setImgUpdate] = useState("");
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+
     const style = {
         display: "flex",
         justifyContent: "space-around",
@@ -37,6 +46,34 @@ const ProfileUpdate = () => {
             }
         })();
     }, [img]);
+
+    const hanleUpdateProfile = async () => {
+        const data = {
+            id: auth?.id,
+            username: username || auth?.username,
+            password: password || auth?.password,
+            name: name || auth?.name,
+            address: address || auth?.address,
+            email: email || auth?.email,
+            phone: phone || auth?.phone,
+            createdDate: auth?.createdDate,
+            roleId: auth?.roleId,
+            active: auth?.active,
+        };
+        try {
+            const response = await updateProfile(data);
+            setAuth((prevState) => ({ ...prevState, ...response }));
+            setUsername("");
+            setPassword("");
+            setName("");
+            setAddress("");
+            setEmail("");
+            setPhone("");
+            return router.push("/");
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <Box sx={style}>
@@ -92,6 +129,8 @@ const ProfileUpdate = () => {
                         margin="normal"
                         fullWidth
                         placeholder={auth?.username}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                 </div>
                 <div>
@@ -101,6 +140,8 @@ const ProfileUpdate = () => {
                         variant="standard"
                         margin="normal"
                         fullWidth
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
                 <div>
@@ -111,6 +152,8 @@ const ProfileUpdate = () => {
                         margin="normal"
                         fullWidth
                         placeholder={auth?.name}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                     />
                 </div>
                 <div>
@@ -121,6 +164,8 @@ const ProfileUpdate = () => {
                         margin="normal"
                         fullWidth
                         placeholder={auth?.address}
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
                     />
                 </div>
                 <div>
@@ -131,6 +176,8 @@ const ProfileUpdate = () => {
                         margin="normal"
                         fullWidth
                         placeholder={auth?.email}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
@@ -141,11 +188,15 @@ const ProfileUpdate = () => {
                         margin="normal"
                         fullWidth
                         placeholder={auth?.phone}
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                     />
                 </div>
 
                 <div style={{ marginTop: 20 }}>
-                    <button className="btn">Cập Nhật</button>
+                    <button className="btn" onClick={hanleUpdateProfile}>
+                        Cập Nhật
+                    </button>
                 </div>
             </div>
         </Box>

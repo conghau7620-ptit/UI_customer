@@ -60,3 +60,13 @@ export const updateAvatar = async (img, params) => {
     });
     return response;
 };
+
+export const updateProfile = async (data) => {
+    const url = "/user";
+    const response = await axiosClient.put(url, data, {
+        headers: {
+            Authorization: `Bearer ${JSON.parse(getItem("TOKEN"))}`,
+        },
+    });
+    return response;
+};
