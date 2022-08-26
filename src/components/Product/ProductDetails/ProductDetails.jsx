@@ -3,10 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import Slider from "react-slick";
 import socialData from "data/social";
 import { Reviews } from "../Reviews/Reviews";
-import { ReviewFrom } from "../ReviewForm/ReviewFrom";
 import { useRouter } from "next/router";
 import { CartContext } from "pages/_app";
-import { getOneProduct } from "api/productApi";
+import { getOneProduct, getAllReviews } from "api/productApi";
 import { setItem } from "utils/local";
 
 export const ProductDetails = () => {
@@ -15,6 +14,7 @@ export const ProductDetails = () => {
 
     const socialLinks = [...socialData];
     const [product, setProduct] = useState(null);
+    const [reviews, setReviews] = useState([]);
     const [addedInCart, setAddedInCart] = useState(false);
 
     useEffect(() => {
@@ -27,6 +27,18 @@ export const ProductDetails = () => {
             }
         };
         getProductDetails();
+    }, [router.query.id]);
+
+    useEffect(() => {
+        const getAllReviewByProductId = async () => {
+            try {
+                const response = await getAllReviews(router.query.id);
+                setReviews(response.feedbackResponses);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getAllReviewByProductId();
     }, [router.query.id]);
 
     useEffect(() => {
@@ -253,7 +265,7 @@ export const ProductDetails = () => {
                                 {tab === 2 && (
                                     <div className="tab-cont product-reviews">
                                         {/* <!-- Product Reviews --> */}
-                                        <Reviews reviews={product.reviews} />
+                                        <Reviews reviews={reviews} />
 
                                         {/* <!-- Product Review Form --> */}
                                         {/* <ReviewFrom /> */}

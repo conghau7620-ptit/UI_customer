@@ -1,4 +1,14 @@
-export const Card = ({ order, index, onCollapse, active, onCancelOrder }) => {
+import { useState } from "react";
+import ReviewModal from "components/Product/ReviewModal/ReviewModal";
+
+export const Card = ({
+    order,
+    index,
+    onCollapse,
+    active,
+    onCancelOrder,
+    setCount,
+}) => {
     const {
         createdDate,
         orderAddress,
@@ -7,7 +17,10 @@ export const Card = ({ order, index, onCollapse, active, onCancelOrder }) => {
         orderDetailsResponses,
         id,
     } = order;
+    console.log(order);
 
+    const [isOpen, setIsOpen] = useState();
+    const [orderDetailsId, setOrderDetailsId] = useState();
     return (
         <>
             <div
@@ -19,7 +32,7 @@ export const Card = ({ order, index, onCollapse, active, onCancelOrder }) => {
                     <div className="profile-orders__col">
                         <span className="profile-orders__col-mob">Ngày</span>
                         <span className="profile-orders__item-date">
-                            {createdDate}
+                            {new Date(createdDate).toLocaleDateString("en-GB")}
                         </span>
                     </div>
                     <div className="profile-orders__col">
@@ -80,14 +93,41 @@ export const Card = ({ order, index, onCollapse, active, onCancelOrder }) => {
                 <div className="profile-orders__content">
                     <ul>
                         {orderDetailsResponses.map((item, index) => (
-                            <li key={index}>
-                                {`Tên Sản Phẩm: ${item.productName}`}
+                            <li
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                }}
+                                key={index}
+                            >
+                                <span>{`Tên Sản Phẩm: ${item.productName}`}</span>
                                 <span>{`Số Lượng: ${item.quantity}`}</span>
                                 <span>
                                     {`Tổng: ${item.amount.toLocaleString("vi", {
                                         style: "currency",
                                         currency: "VND",
                                     })}`}
+                                </span>
+
+                                <span
+                                    className={`btn ${
+                                        status === "đã hoàn thành" &&
+                                        !item.isFeedback
+                                            ? ""
+                                            : "disabled_btn"
+                                    }`}
+                                    style={{
+                                        paddingRight: 30,
+                                        paddingLeft: 30,
+                                        cursor: "pointer",
+                                    }}
+                                    onClick={() => {
+                                        setIsOpen(true);
+                                        setOrderDetailsId(item.id);
+                                    }}
+                                >
+                                    Đánh Giá
                                 </span>
                             </li>
                         ))}
@@ -98,6 +138,12 @@ export const Card = ({ order, index, onCollapse, active, onCancelOrder }) => {
                     </ul>
                 </div>
             </div>
+            <ReviewModal
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                orderDetailsId={orderDetailsId}
+                setCount={setCount}
+            />
         </>
     );
 };

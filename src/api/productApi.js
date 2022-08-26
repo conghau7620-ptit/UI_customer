@@ -1,5 +1,5 @@
 import axiosClient from "./axiosClient";
-
+import { getItem } from "utils/local";
 export const getTopProduct = async () => {
     const url = "/product/top-product";
     const response = await axiosClient.get(url);
@@ -26,6 +26,23 @@ export const getAllType = async () => {
 
 export const getAllBrand = async () => {
     const url = "/brand/active";
-    const response = axiosClient.get(url);
+    const response = await axiosClient.get(url);
+    return response;
+};
+
+export const getAllReviews = async (id) => {
+    const url = `/feedback/${id}`;
+    const response = await axiosClient.get(url);
+    return response;
+};
+
+export const createFeedBack = async (data) => {
+    const url = "/feedback";
+    const response = await axiosClient.post(url, data, {
+        headers: {
+            Authorization: `Bearer ${JSON.parse(getItem("TOKEN"))}`,
+            "Content-Type": "multipart/form-data",
+        },
+    });
     return response;
 };

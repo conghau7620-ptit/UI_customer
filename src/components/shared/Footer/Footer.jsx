@@ -18,7 +18,7 @@ export const Footer = () => {
                 <div className="wrapper">
                     <div className="footer-top">
                         <div className="footer-top__social">
-                            <span>Find us here:</span>
+                            <span>Liên Kết Với Chúng Tôi Tại:</span>
                             <ul>
                                 {footerSocial.map((social, index) => (
                                     <li key={index}>
@@ -47,8 +47,8 @@ export const Footer = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="footer-nav">
-                        {/* Footer Nav */}
+                    {/* <div className="footer-nav">
+                        
                         {footerNav.map((nav, index) => (
                             <NavCol nav={nav} key={index} />
                         ))}
@@ -80,7 +80,7 @@ export const Footer = () => {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="footer-copy"></div>
                 </div>
             </footer>

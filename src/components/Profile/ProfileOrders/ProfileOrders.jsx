@@ -2,10 +2,12 @@ import { useState, useEffect, useContext } from "react";
 import { Card } from "./Card/Card";
 import { AuthContext } from "context/authProvider";
 import { getOrder, cancelOrder } from "api/userApi";
+
 export const ProfileOrders = () => {
     const { auth } = useContext(AuthContext);
     const [active, setActive] = useState(-1);
     const [orders, setOrders] = useState();
+    const [count, setCount] = useState(0);
 
     const handleCollapse = (indx) => {
         if (active === indx) {
@@ -25,7 +27,7 @@ export const ProfileOrders = () => {
 
     useEffect(() => {
         getOrderList();
-    }, []);
+    }, [count]);
 
     const handleCancelOrder = async (id) => {
         try {
@@ -54,6 +56,7 @@ export const ProfileOrders = () => {
                         order={order}
                         active={active}
                         onCancelOrder={handleCancelOrder}
+                        setCount={setCount}
                     />
                 ))}
             </div>
