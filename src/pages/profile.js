@@ -16,10 +16,7 @@ const breadcrumbsData = [
 ];
 const ProfilePage = () => {
     const { auth } = useContext(AuthContext);
-    console.log(auth);
-    useEffect(() => {
-        !auth && router.push("/login");
-    });
+
     return (
         <PublicLayout
             breadcrumb={breadcrumbsData}

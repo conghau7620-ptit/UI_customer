@@ -20,9 +20,7 @@ const breadcrumbsData = [
 ];
 const CheckoutPage = () => {
     const { auth } = useContext(AuthContext);
-    useEffect(() => {
-        !auth && router.push("/login");
-    }, []);
+
     return (
         <PublicLayout breadcrumb={breadcrumbsData} breadcrumbTitle="Thanh Toán">
             <Checkout />
