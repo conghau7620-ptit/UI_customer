@@ -11,12 +11,12 @@ const ProfileUpdate = () => {
     const [img, setImg] = useState();
     const [imgUpdate, setImgUpdate] = useState("");
 
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState(auth?.username);
     const [password, setPassword] = useState("");
-    const [name, setName] = useState("");
-    const [address, setAddress] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
+    const [name, setName] = useState(auth?.name);
+    const [address, setAddress] = useState(auth?.address);
+    const [email, setEmail] = useState(auth?.email);
+    const [phone, setPhone] = useState(auth?.phone);
 
     const style = {
         display: "flex",
@@ -128,7 +128,7 @@ const ProfileUpdate = () => {
                         variant="standard"
                         margin="normal"
                         fullWidth
-                        placeholder={auth?.username}
+                        defaultValue={auth?.username}
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
@@ -151,7 +151,6 @@ const ProfileUpdate = () => {
                         variant="standard"
                         margin="normal"
                         fullWidth
-                        placeholder={auth?.name}
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
@@ -163,7 +162,6 @@ const ProfileUpdate = () => {
                         variant="standard"
                         margin="normal"
                         fullWidth
-                        placeholder={auth?.address}
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                     />
@@ -175,7 +173,6 @@ const ProfileUpdate = () => {
                         variant="standard"
                         margin="normal"
                         fullWidth
-                        placeholder={auth?.email}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -187,7 +184,6 @@ const ProfileUpdate = () => {
                         variant="standard"
                         margin="normal"
                         fullWidth
-                        placeholder={auth?.phone}
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                     />
